@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IOT-Motor</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="theme-color" content="#000" />
+  </head>
+  <body>
+    <!-- <div class="deco">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div> -->
+    <div class="container">
+      <div class="con-box">
+        <div class="status">
+          <h1>LED state:</h1>
+          <span id="state">closed...🚪</span>
+        </div>
+        <button onclick="led(this)" id="sta">on</button>
+        <div class="log" id="log"></div>
+      </div>
+    </div>
+    <script>
+      const ws = new WebSocket("ws://192.168.1.5:9000/MOTOR");
+      const state = document.getElementById("state");
+      const sta = document.getElementById("sta");
+      const log = document.getElementById("log");
+      ws.onmessage = ({ data }) => {
+        let dd = JSON.parse(data);
+        let h5 = document.createElement("h5");
+        h5.innerHTML = dd.msg;
+        log.appendChild(h5);
+        log.scrollTop = log.scrollHeight;
+        switch (dd.event) {
+          case "LED": {
+            console.log(dd);
+            if (dd.state != 0) {
+              sta.innerHTML = "off";
+              sta.style.backgroundColor = "tomato";
+              state.innerHTML = "Running...🏃‍♂️";
+            } else {
+              sta.innerHTML = "on";
+              sta.style.backgroundColor = "#00ff80";
+              state.innerHTML = "closed...🚪";
+            }
+          }
+        }
+      };
+
+      function led(e) {
+        let value = e.innerHTML;
+        if (value === "on") {
+          ws.send(JSON.stringify({ event: "LED", value: "1" }));
+          e.innerHTML = "off";
+          e.style.backgroundColor = "tomato";
+          state.innerHTML = "Running...🏃‍♂️";
+        } else {
+          ws.send(JSON.stringify({ event: "LED", value: "0" }));
+          e.innerHTML = "on";
+          e.style.backgroundColor = "#00ff80";
+          state.innerHTML = "closed...🚪";
+        }
+      }
+      // window.setInterval("refresh()", 10000);
+      // // Call a function every 10000 milliseconds.
+      // // (OR 10 seconds).
+      // // Refresh or reload page.
+      // function refresh() {
+      //   window.location.reload();
+      // }
+    </script>
+  </body>
+</html>

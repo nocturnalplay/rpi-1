@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #000;
+  width: 100%;
+  height: 100vh;
+  font-family: "Ubuntu", sans-serif;
+}
+.deco {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+.deco div {
+  background-color: rgba(117, 117, 117, 0.11);
+  position: absolute;
+  border-radius: 4px;
+}
+.deco div:nth-child(1) {
+  width: 100px;
+  height: 100px;
+  top: 80%;
+  left: 20%;
+  animation: move 3s 0.1s ease-out infinite;
+}
+.deco div:nth-child(2) {
+  width: 200px;
+  height: 200px;
+  top: 20%;
+  left: 30%;
+  animation: move 4s 0.3s ease-out infinite;
+}
+.deco div:nth-child(3) {
+  width: 50px;
+  height: 50px;
+  top: 30%;
+  left: 20%;
+  animation: move 3s 0.5s ease-out infinite;
+}
+.deco div:nth-child(4) {
+  width: 70px;
+  height: 70px;
+  top: 60%;
+  left: 25%;
+  animation: move 4s 0.7s ease-out infinite;
+}
+.deco div:nth-child(5) {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  right: 20%;
+  animation: move 3s 0.5s ease-out infinite;
+}
+.deco div:nth-child(6) {
+  width: 200px;
+  height: 200px;
+  bottom: 10%;
+  right: 30%;
+  animation: move 4s 1s ease-out infinite;
+}
+.deco div:nth-child(7) {
+  width: 50px;
+  height: 50px;
+  bottom: 30%;
+  right: 20%;
+  animation: move 4s 0.8s ease-out infinite;
+}
+.deco div:nth-child(8) {
+  width: 70px;
+  height: 70px;
+  bottom: 50%;
+  right: 25%;
+  animation: move 3s 0.3s ease-out infinite;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+.con-box {
+  position: relative;
+  background-color: rgb(48, 48, 48);
+  height: 400px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container .con-box > * {
+  margin: 10px;
+}
+.container .con-box .status{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.container .con-box .status h1 {
+  text-transform: capitalize;
+}
+.container .con-box .status span {
+  text-transform: uppercase;
+  font-family: "Edu VIC WA NT Beginner", cursive;
+  padding: 3px 10px;
+  background-color: rgb(0, 255, 191);
+  color: black;
+  border-radius: 4px;
+  font-weight: 900;
+}
+.container .con-box button {
+  padding: 6px 20px;
+  border: none;
+  outline: none;
+  font-size: 25px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  font-weight: 800;
+  transition: 0.5s;
+  width: 200px;
+  background-color: #00ff80;
+}
+
+.container .con-box .log {
+  background-color: #000;
+  width: 100%;
+  height: 200px;
+  border-radius: 4px;
+  overflow: auto;
+}
+.container .con-box .log h5 {
+  padding: 10px 10px 0 10px;
+}
